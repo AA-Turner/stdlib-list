@@ -1,6 +1,7 @@
 name: Generate stdlib lists
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       dry-run:
