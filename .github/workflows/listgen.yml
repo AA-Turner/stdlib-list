@@ -47,6 +47,7 @@ jobs:
   expand-list-legacy:
     needs: pre-list-legacy
     strategy:
+      fail-fast: false
       matrix:
         python:
           - "3.7"
@@ -94,6 +95,7 @@ jobs:
           if [[ "${LISTGEN_DRY_RUN}" == "true" ]]; then
             git diff
           fi
+        shell: bash
 
       - name: create PR
         if: ${{ !inputs.dry-run }}
@@ -113,6 +115,7 @@ jobs:
 
   expand-list:
     strategy:
+      fail-fast: false
       matrix:
         python:
           - "3.10"
@@ -159,6 +162,7 @@ jobs:
           if [[ "${LISTGEN_DRY_RUN}" == "true" ]]; then
             git diff
           fi
+        shell: bash
 
       - name: create PR
         if: ${{ !inputs.dry-run }}
